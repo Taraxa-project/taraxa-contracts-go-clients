@@ -1,4 +1,4 @@
-package main
+package dpos_contract_client_demo
 
 import (
 	"log"
@@ -6,8 +6,8 @@ import (
 	taraxa_contracts_go_clients "github.com/Taraxa-project/taraxa-contracts-go-clients"
 )
 
-func main() {
-	log.Print("Hello world")
+func Demo() {
+	log.Print("Dpos client demo")
 
 	config, err := taraxa_contracts_go_clients.GenContractsClientsConfig(taraxa_contracts_go_clients.Mainnet)
 	if err != nil {
@@ -35,5 +35,4 @@ func main() {
 	} else {
 		log.Printf("GetTotalEligibleVotesCount: %d\n\n", totalEligibleVotesCount)
 	}
-
 }

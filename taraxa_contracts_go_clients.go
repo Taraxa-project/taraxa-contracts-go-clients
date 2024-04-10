@@ -2,9 +2,9 @@ package taraxa_contracts_go_clients
 
 import (
 	"errors"
-	"log"
 	"math/big"
 
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/eth/tara_client_contract_client"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/tara/dpos_contract_client"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -26,11 +26,12 @@ const (
 )
 
 type Config struct {
-	TaraxaNetworkHttpUrl      string
-	TaraxaNetworkWsUrl        string
-	TaraxaNetworkChainID      *big.Int
-	TaraxaDposContractAddress common.Address
-	EhereumNetworkUrl         string
+	TaraxaNetworkHttpUrl       string
+	TaraxaNetworkWsUrl         string
+	TaraxaNetworkChainID       *big.Int
+	TaraxaDposContractAddress  common.Address
+	EhereumNetworkHttpUrl      string
+	TaraxClientContractAddress common.Address
 }
 
 // Creates new GenContractsClientsConfig based on default values set for different taraxa networks
@@ -43,21 +44,24 @@ func GenContractsClientsConfig(network Network) (*Config, error) {
 		config.TaraxaNetworkWsUrl = "" // TODO
 		config.TaraxaNetworkChainID = big.NewInt(841)
 		config.TaraxaDposContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
-		config.EhereumNetworkUrl = "" // TODO
+		config.EhereumNetworkHttpUrl = "https://holesky.drpc.org"   // TODO: change
+		config.TaraxClientContractAddress = common.HexToAddress("") // TODO: change
 		break
 	case Testnet:
 		config.TaraxaNetworkHttpUrl = "https://rpc.testnet.taraxa.io"
 		config.TaraxaNetworkWsUrl = "" // TODO
 		config.TaraxaNetworkChainID = big.NewInt(842)
 		config.TaraxaDposContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
-		config.EhereumNetworkUrl = "" // TODO
+		config.EhereumNetworkHttpUrl = "https://holesky.drpc.org"
+		config.TaraxClientContractAddress = common.HexToAddress("0x52a7c8db4a32016e4b8b6b4b44590c52079f32a9")
 		break
 	case Devnet:
 		config.TaraxaNetworkHttpUrl = "https://rpc.devnet.taraxa.io"
 		config.TaraxaNetworkWsUrl = "" // TODO
 		config.TaraxaNetworkChainID = big.NewInt(843)
 		config.TaraxaDposContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
-		config.EhereumNetworkUrl = "" // TODO
+		config.EhereumNetworkHttpUrl = "https://holesky.drpc.org"   // TODO: change
+		config.TaraxClientContractAddress = common.HexToAddress("") // TODO: change
 		break
 	default:
 		return nil, errors.New("Invalid network argument")
@@ -110,7 +114,6 @@ func (taraxaContractsClients *TaraxaContractsClients) NewDposContractClient(comm
 			return nil, err
 		}
 	}
-	log.Println("tu sme ", networkUrl, taraxaContractsClients.config.TaraxaDposContractAddress, taraxaContractsClients.config.TaraxaNetworkChainID)
 
 	dposContractClient, err := dpos_contract_client.NewDposContractClient(taraxaContractsClients.taraClient, taraxaContractsClients.config.TaraxaDposContractAddress, taraxaContractsClients.config.TaraxaNetworkChainID)
 	if err != nil {
@@ -118,4 +121,37 @@ func (taraxaContractsClients *TaraxaContractsClients) NewDposContractClient(comm
 	}
 
 	return dposContractClient, nil
+}
+
+func (taraxaContractsClients *TaraxaContractsClients) NewTaraClientContractClient(communicationProtocol CommunicationProtocol) (*tara_client_contract_client.TaraClientContractClient, error) {
+	var err error
+	var networkUrl string
+
+	switch communicationProtocol {
+	case Http:
+		if taraxaContractsClients.config.EhereumNetworkHttpUrl == "" {
+			return nil, errors.New("config.EhereumNetworkHttpUrl not configured")
+		}
+		networkUrl = taraxaContractsClients.config.EhereumNetworkHttpUrl
+		break
+	case WebSocket:
+		return nil, errors.New("WebSocket not supported yet")
+	default:
+		return nil, errors.New("invalid communicationProtocol argument")
+	}
+
+	// Create eth client in case it was not created yet
+	if taraxaContractsClients.ethClient == nil {
+		taraxaContractsClients.ethClient, err = ethclient.Dial(networkUrl)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	taraClientContractClient, err := tara_client_contract_client.NewTaraClientContractClient(taraxaContractsClients.ethClient, taraxaContractsClients.config.TaraxClientContractAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	return taraClientContractClient, nil
 }
