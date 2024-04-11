@@ -1,40 +1,62 @@
 package dpos_contract_client
 
 import (
-	"context"
-	"crypto/ecdsa"
 	"errors"
 	"math/big"
 
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
 	dpos_interface "github.com/Taraxa-project/taraxa-contracts-go-clients/tara/dpos_contract_client/dpos_interface"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethclient"
 )
 
 // DposContractClient contains variables needed for communication with taraxa dpos smart contract
 type DposContractClient struct {
+	*clients_common.ContractClient
 	dposInterface *dpos_interface.DposInterface
-	ethClient     *ethclient.Client
-	chainID       *big.Int
 }
 
-type Transactor struct {
-	TransactOpts *bind.TransactOpts
-	Address      common.Address
-	Nonce        uint64
+func GenNetConfig(network clients_common.Network) (*clients_common.NetConfig, error) {
+	config := new(clients_common.NetConfig)
+
+	switch network {
+	case clients_common.Mainnet:
+		config.HttpUrl = "https://rpc.mainnet.taraxa.io"
+		config.WsUrl = "" // TODO
+		config.ChainID = big.NewInt(841)
+		config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
+		break
+	case clients_common.Testnet:
+		config.HttpUrl = "https://rpc.testnet.taraxa.io"
+		config.WsUrl = "" // TODO
+		config.ChainID = big.NewInt(842)
+		config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
+		break
+	case clients_common.Devnet:
+		config.HttpUrl = "https://rpc.devnet.taraxa.io"
+		config.WsUrl = "" // TODO
+		config.ChainID = big.NewInt(843)
+		config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
+		break
+	default:
+		return nil, errors.New("Invalid network argument")
+	}
+
+	return config, nil
 }
 
-func NewDposContractClient(ethClient *ethclient.Client, dposContractAddress common.Address, chainID *big.Int) (*DposContractClient, error) {
-	dposContractClient := new(DposContractClient)
+func NewDposContractClient(config clients_common.NetConfig, communicationProtocol clients_common.CommunicationProtocol) (*DposContractClient, error) {
 	var err error
 
-	dposContractClient.dposInterface, err = dpos_interface.NewDposInterface(dposContractAddress, ethClient)
-	dposContractClient.ethClient = ethClient
-	dposContractClient.chainID = chainID
+	dposContractClient := new(DposContractClient)
+	dposContractClient.ContractClient, err = clients_common.NewContractClient(config, communicationProtocol)
+	if err != nil {
+		return nil, err
+	}
+
+	dposContractClient.dposInterface, err = dpos_interface.NewDposInterface(dposContractClient.Config.ContractAddress, dposContractClient.EthClient)
 	if err != nil {
 		return nil, err
 	}
@@ -150,69 +172,8 @@ func (DposContractClient *DposContractClient) GetUndelegations(delegator common.
 	return undelegations, nil
 }
 
-func (DposContractClient *DposContractClient) NewTransactor(privateKeyStr string) (*Transactor, error) {
-	privateKey, err := crypto.HexToECDSA(privateKeyStr)
-	if err != nil {
-		return nil, err
-	}
-
-	publicKey := privateKey.Public()
-	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
-	address := crypto.PubkeyToAddress(*publicKeyECDSA)
-	if !ok {
-		return nil, errors.New("error casting public key to ECDSA")
-	}
-
-	transactOpts, err := bind.NewKeyedTransactorWithChainID(privateKey, DposContractClient.chainID)
-	if err != nil {
-		return nil, err
-	}
-
-	nonce, err := DposContractClient.ethClient.PendingNonceAt(context.Background(), address)
-	if err != nil {
-		return nil, err
-	}
-
-	transactor := new(Transactor)
-	transactor.Address = address
-	transactor.Nonce = nonce
-	transactor.TransactOpts = new(bind.TransactOpts)
-	*transactor.TransactOpts = *transactOpts
-
-	return transactor, nil
-}
-
-func (DposContractClient *DposContractClient) createNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
-	nonce, err := DposContractClient.ethClient.PendingNonceAt(context.Background(), transactor.Address)
-	if err != nil {
-		return nil, err
-	}
-
-	gasPrice, err := DposContractClient.ethClient.SuggestGasPrice(context.Background())
-	if err != nil {
-		return nil, err
-	}
-
-	maxNonce := transactor.Nonce
-	if nonce > maxNonce {
-		maxNonce = nonce
-	}
-
-	transactOpts := new(bind.TransactOpts)
-	*transactOpts = *transactor.TransactOpts
-
-	transactOpts.Nonce = big.NewInt(int64(maxNonce))
-	transactOpts.GasLimit = uint64(300000) // in units
-	transactOpts.GasPrice = gasPrice
-
-	// Increment transactos nonce for the next tx
-	transactor.Nonce++
-
-	return transactOpts, nil
-}
-
-func (DposContractClient *DposContractClient) Delegate(transactor *Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) Delegate(transactor *clients_common.Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -221,8 +182,8 @@ func (DposContractClient *DposContractClient) Delegate(transactor *Transactor, a
 	return DposContractClient.dposInterface.Delegate(transactOpts, validator)
 }
 
-func (DposContractClient *DposContractClient) Undelegate(transactor *Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) Undelegate(transactor *clients_common.Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -230,8 +191,8 @@ func (DposContractClient *DposContractClient) Undelegate(transactor *Transactor,
 	return DposContractClient.dposInterface.Undelegate(transactOpts, validator, amount)
 }
 
-func (DposContractClient *DposContractClient) ConfirmUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) ConfirmUndelegate(transactor *clients_common.Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -239,8 +200,8 @@ func (DposContractClient *DposContractClient) ConfirmUndelegate(transactor *Tran
 	return DposContractClient.dposInterface.ConfirmUndelegate(transactOpts, validator)
 }
 
-func (DposContractClient *DposContractClient) CancelUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) CancelUndelegate(transactor *clients_common.Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -248,8 +209,8 @@ func (DposContractClient *DposContractClient) CancelUndelegate(transactor *Trans
 	return DposContractClient.dposInterface.CancelUndelegate(transactOpts, validator)
 }
 
-func (DposContractClient *DposContractClient) RedelegateUndelegate(transactor *Transactor, amount *big.Int, validatorFrom common.Address, validatorTo common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) RedelegateUndelegate(transactor *clients_common.Transactor, amount *big.Int, validatorFrom common.Address, validatorTo common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -257,8 +218,8 @@ func (DposContractClient *DposContractClient) RedelegateUndelegate(transactor *T
 	return DposContractClient.dposInterface.ReDelegate(transactOpts, validatorFrom, validatorTo, amount)
 }
 
-func (DposContractClient *DposContractClient) ClaimRewards(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) ClaimRewards(transactor *clients_common.Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -266,8 +227,8 @@ func (DposContractClient *DposContractClient) ClaimRewards(transactor *Transacto
 	return DposContractClient.dposInterface.ClaimRewards(transactOpts, validator)
 }
 
-func (DposContractClient *DposContractClient) ClaimCommissionRewards(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) ClaimCommissionRewards(transactor *clients_common.Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -275,8 +236,8 @@ func (DposContractClient *DposContractClient) ClaimCommissionRewards(transactor 
 	return DposContractClient.dposInterface.ClaimCommissionRewards(transactOpts, validator)
 }
 
-func (DposContractClient *DposContractClient) RegisterValidator(transactor *Transactor, validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) RegisterValidator(transactor *clients_common.Transactor, validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -284,8 +245,8 @@ func (DposContractClient *DposContractClient) RegisterValidator(transactor *Tran
 	return DposContractClient.dposInterface.RegisterValidator(transactOpts, validator, proof, vrf_key, commission, description, endpoint)
 }
 
-func (DposContractClient *DposContractClient) SetValidatorInfo(transactor *Transactor, validator common.Address, description string, endpoint string) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) SetValidatorInfo(transactor *clients_common.Transactor, validator common.Address, description string, endpoint string) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -293,8 +254,8 @@ func (DposContractClient *DposContractClient) SetValidatorInfo(transactor *Trans
 	return DposContractClient.dposInterface.SetValidatorInfo(transactOpts, validator, description, endpoint)
 }
 
-func (DposContractClient *DposContractClient) SetCommission(transactor *Transactor, validator common.Address, commission uint16) (*types.Transaction, error) {
-	transactOpts, err := DposContractClient.createNewTransactOpts(transactor)
+func (DposContractClient *DposContractClient) SetCommission(transactor *clients_common.Transactor, validator common.Address, commission uint16) (*types.Transaction, error) {
+	transactOpts, err := DposContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
