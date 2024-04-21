@@ -1,13 +1,14 @@
-package dpos_contract_client_demo
+package main
 
 import (
 	"log"
 
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
 	dpos_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/tara/dpos_contract_client"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/tara/net_config"
 )
 
-func Demo() {
+func main() {
 	log.Print("Dpos client demo")
 
 	// var config clients_common.NetConfig
@@ -15,7 +16,7 @@ func Demo() {
 	// config.ChainID = big.NewInt(649)
 	// config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
 
-	config, err := dpos_contract_client.GenNetConfig(clients_common.Mainnet)
+	config, err := net_config.GenNetConfig(clients_common.Mainnet)
 	if err != nil {
 		log.Fatal(err)
 	}

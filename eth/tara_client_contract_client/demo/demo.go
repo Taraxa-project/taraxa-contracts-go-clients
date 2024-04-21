@@ -1,4 +1,4 @@
-package tara_client_contract_client_demo
+package main
 
 import (
 	"log"
@@ -7,7 +7,7 @@ import (
 	tara_client_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/eth/tara_client_contract_client"
 )
 
-func Demo() {
+func main() {
 	log.Print("Tara client demo")
 
 	config, err := tara_client_contract_client.GenNetConfig(clients_common.Testnet)
@@ -28,7 +28,7 @@ func Demo() {
 	}
 
 	// TODO: add here valid private key
-	privateKey := "0000000000000000000000000000000000000000000000000000000000000000"
+	privateKey := ""
 
 	transactor, err := taraClientContractClient.NewTransactor(privateKey)
 	if err != nil {
