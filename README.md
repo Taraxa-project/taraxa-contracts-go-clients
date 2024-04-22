@@ -54,6 +54,14 @@ or update all submodules:
 
 ```
 git submodule update --init --recursive
+cd submodules/bridge
+git submodule update --init --recursive
+
+Tmeporarly replace:
+// import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+
+by:
+import "openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
 ```
 
 Generate abi & client:

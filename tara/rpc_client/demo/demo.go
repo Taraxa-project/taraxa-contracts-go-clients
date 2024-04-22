@@ -29,9 +29,11 @@ func main() {
 
 	pillarBlockData, err := rpcClient.GetPillarBlockData(100, true)
 	if err != nil {
-		log.Print("GetPillarBlockData err: ", err)
+		log.Fatal("GetPillarBlockData err: ", err)
 	} else {
 		log.Printf("GetPillarBlockData: %d\n\n", pillarBlockData)
 	}
+
+	log.Printf("pillarBlockData.PillarBlock.PbftPerio: %d\n\n", pillarBlockData.PillarBlock.PbftPeriod)
 
 }

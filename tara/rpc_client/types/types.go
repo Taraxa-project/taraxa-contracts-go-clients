@@ -23,7 +23,6 @@ type PillarBlock struct {
 }
 
 type PillarBlockData struct {
-	PillarBlock           PillarBlock        `json:"pillar_block"              rlp:"required"`
-	PillarBlockBinaryData string             `json:"pillar_block_binary_data"  rlp:"optional"` // hex encoded byte array
-	Signatures            []CompactSignature `json:"signatures"                rlp:"optional"`
+	PillarBlock PillarBlock        `json:"pillar_block"  rlp:"required"`
+	Signatures  []CompactSignature `json:"signatures"    rlp:"optional"`
 }
