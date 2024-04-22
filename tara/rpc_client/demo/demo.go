@@ -32,8 +32,15 @@ func main() {
 		log.Fatal("GetPillarBlockData err: ", err)
 	} else {
 		log.Printf("GetPillarBlockData: %d\n\n", pillarBlockData)
+		log.Printf("pillarBlockData.PillarBlock.PbftPeriod: %d\n\n", pillarBlockData.PillarBlock.PbftPeriod)
 	}
 
-	log.Printf("pillarBlockData.PillarBlock.PbftPerio: %d\n\n", pillarBlockData.PillarBlock.PbftPeriod)
+	taraConfig, err := rpcClient.GetTaraConfig()
+	if err != nil {
+		log.Fatal("GetTaraConfig err: ", err)
+	} else {
+		log.Printf("GetTaraConfig: %d\n\n", taraConfig)
+		log.Printf("taraConfig.Hardforks.FicusHf.PillarBlocksInterval: %d\n\n", uint64(taraConfig.Hardforks.FicusHf.PillarBlocksInterval))
 
+	}
 }

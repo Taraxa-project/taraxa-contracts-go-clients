@@ -34,3 +34,13 @@ func (RpcClient *RpcClient) GetPillarBlockData(period uint64, includeBinaryData 
 
 	return pillarBlockData, err
 }
+
+func (RpcClient *RpcClient) GetTaraConfig() (*tara_rpc_types.TaraConfig, error) {
+	var taraConfig *tara_rpc_types.TaraConfig
+	err := RpcClient.EthClient.Client().CallContext(context.Background(), &taraConfig, "taraxa_getConfig")
+	if err == nil && taraConfig == nil {
+		err = ethereum.NotFound
+	}
+
+	return taraConfig, err
+}

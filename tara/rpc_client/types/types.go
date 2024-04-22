@@ -1,6 +1,9 @@
 package tara_rpc_types
 
-import "github.com/ethereum/go-ethereum/common"
+import (
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/hexutil"
+)
 
 type VoteCountChange struct {
 	Address common.Address `json:"address"   rlp:"required"`
@@ -25,4 +28,21 @@ type PillarBlock struct {
 type PillarBlockData struct {
 	PillarBlock PillarBlock        `json:"pillar_block"  rlp:"required"`
 	Signatures  []CompactSignature `json:"signatures"    rlp:"optional"`
+}
+
+// Config - parsed only partially, new fields can be added anytime
+type TaraConfig struct {
+	ChainId   uint64          `json:"chain_id"  rlp:"required"`
+	Hardforks HardforksConfig `json:"hardforks" rlp:"required"`
+}
+
+type HardforksConfig struct {
+	FicusHf FicusHfConfig `json:"ficus_hf"  rlp:"required"`
+}
+
+type FicusHfConfig struct {
+	BlockNum                hexutil.Uint64 `json:"block_num"                   rlp:"required"`
+	PbftInclusionDelay      hexutil.Uint64 `json:"pbft_inclusion_delay"        rlp:"required"`
+	PillarBlocksInterval    hexutil.Uint64 `json:"pillar_blocks_interval"      rlp:"required"`
+	PillarChainSyncInterval hexutil.Uint64 `json:"pillar_chain_sync_interval"  rlp:"required"`
 }
