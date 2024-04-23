@@ -62,7 +62,7 @@ func (taraClientContractClient *TaraClientContractClient) GetFinalizedPillarBloc
 	return taraClientContractClient.taraClientInterface.GetFinalized(&bind.CallOpts{})
 }
 
-func (taraClientContractClient *TaraClientContractClient) AddPendingBlock(transactor *clients_common.Transactor, blocks []tara_client_contract_interface.PillarBlockWithChanges, lastBlockSigs []tara_client_contract_interface.CompactSignature) (*types.Transaction, error) {
+func (taraClientContractClient *TaraClientContractClient) FinalizeBlocks(transactor *clients_common.Transactor, blocks []tara_client_contract_interface.PillarBlockWithChanges, lastBlockSigs []tara_client_contract_interface.CompactSignature) (*types.Transaction, error) {
 	transactOpts, err := taraClientContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err

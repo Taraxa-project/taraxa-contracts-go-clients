@@ -41,6 +41,5 @@ func main() {
 	} else {
 		log.Printf("GetTaraConfig: %d\n\n", taraConfig)
 		log.Printf("taraConfig.Hardforks.FicusHf.PillarBlocksInterval: %d\n\n", uint64(taraConfig.Hardforks.FicusHf.PillarBlocksInterval))
-
 	}
 }
