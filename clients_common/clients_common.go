@@ -28,10 +28,10 @@ const (
 )
 
 type NetConfig struct {
-	HttpUrl         string
-	WsUrl           string
-	ChainID         *big.Int
-	ContractAddress common.Address
+	HttpUrl         string         `json:"http_url"`
+	WsUrl           string         `json:"ws_url"`
+	ChainID         *big.Int       `json:"chain_id"`
+	ContractAddress common.Address `json:"contract_address"`
 }
 
 type ContractClient struct {
