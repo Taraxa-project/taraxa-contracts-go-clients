@@ -1,10 +1,10 @@
-package net_config
+package tara_net_config
 
 import (
 	"errors"
 	"math/big"
 
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
+	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
 	"github.com/ethereum/go-ethereum/common"
 )
 

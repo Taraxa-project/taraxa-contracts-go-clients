@@ -39,9 +39,9 @@ git submodule update --init --recursive
 
 Generate abi & client:
 ```
-solc --abi --overwrite --optimize submodules/taraxa-evm/taraxa/state/contracts/dpos/solidity/dpos_contract_interface.sol --output-dir tara/dpos_contract_client/dpos_interface/
+solc --abi --overwrite --optimize submodules/taraxa-evm/taraxa/state/contracts/dpos/solidity/dpos_contract_interface.sol --output-dir clients/tara/dpos_contract_client/dpos_interface/
 
-abigen --abi=tara/dpos_contract_client/dpos_interface/DposInterface.abi --pkg=dpos_interface --out=tara/dpos_contract_client/dpos_interface/dpos_interface.go
+abigen --abi=clients/tara/dpos_contract_client/dpos_interface/DposInterface.abi --pkg=dpos_interface --out=clients/tara/dpos_contract_client/dpos_interface/dpos_interface.go
 ```
 
 ### bridge
@@ -63,11 +63,18 @@ Tmeporarly replace:
 by:
 import "openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
 ```
+in src/eth/TaraClient.sol
+
 
 Generate abi & client:
 ```
-solc --abi --overwrite --optimize --base-path .  --include-path submodules/bridge/lib/ submodules/bridge/src/eth/TaraClient.sol --output-dir eth/tara_client_contract_client/contract_interface/
+solc --abi --overwrite --optimize --base-path .  --include-path submodules/bridge/lib/ submodules/bridge/src/eth/TaraClient.sol --output-dir clients/eth/tara_client_contract_client/contract_interface/
 
-abigen --abi=eth/tara_client_contract_client/contract_interface/TaraClient.abi --pkg=tara_client_contract_interface --out=eth/tara_client_contract_client/contract_interface/tara_client_contract_interface.go
-abigen --abi=eth/tara_client_contract_client/contract_interface/PillarBlock.abi --pkg=pillar_block_interface --out=eth/tara_client_contract_client/contract_interface/pillar_block/pillar_block_interface.go
+abigen --abi=clients/eth/tara_client_contract_client/contract_interface/TaraClient.abi --pkg=tara_client_contract_interface --out=clients/eth/tara_client_contract_client/contract_interface/tara_client_contract_interface.go
+abigen --abi=clients/eth/tara_client_contract_client/contract_interface/PillarBlock.abi --pkg=pillar_block_interface --out=clients/eth/tara_client_contract_client/contract_interface/pillar_block/pillar_block_interface.go
+
+
+solc --abi --overwrite --optimize --base-path .  --include-path submodules/bridge/lib/ submodules/bridge/src/lib/BridgeBase.sol --output-dir clients/bridge_contract_client/contract_interface/
+
+abigen --abi=clients/bridge_contract_client/contract_interface/BridgeBase.abi --pkg=bridge_contract_interface --out=clients/bridge_contract_client/contract_interface/bridge_contract_interface.go
 ```

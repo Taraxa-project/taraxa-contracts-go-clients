@@ -3,14 +3,15 @@ package main
 import (
 	"log"
 
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
-	tara_client_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/eth/tara_client_contract_client"
+	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth/eth_net_config"
+	tara_client_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth/tara_client_contract_client"
 )
 
 func main() {
 	log.Print("Tara client demo")
 
-	config, err := tara_client_contract_client.GenNetConfig(clients_common.Testnet)
+	config, err := eth_net_config.GenNetConfig(clients_common.Testnet)
 	if err != nil {
 		log.Fatal(err)
 	}

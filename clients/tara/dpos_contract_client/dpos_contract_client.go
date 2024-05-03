@@ -3,8 +3,8 @@ package dpos_contract_client
 import (
 	"math/big"
 
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
-	dpos_interface "github.com/Taraxa-project/taraxa-contracts-go-clients/tara/dpos_contract_client/dpos_interface"
+	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	dpos_interface "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/dpos_contract_client/dpos_interface"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -27,6 +27,20 @@ func NewDposContractClient(config clients_common.NetConfig, communicationProtoco
 	}
 
 	dposContractClient.dposInterface, err = dpos_interface.NewDposInterface(dposContractClient.Config.ContractAddress, dposContractClient.EthClient)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposContractClient, nil
+}
+
+func NewSharedDposContractClient(sharedClient *clients_common.ContractClient, contractAddress common.Address) (*DposContractClient, error) {
+	var err error
+
+	dposContractClient := new(DposContractClient)
+	dposContractClient.ContractClient = sharedClient
+
+	dposContractClient.dposInterface, err = dpos_interface.NewDposInterface(contractAddress, dposContractClient.EthClient)
 	if err != nil {
 		return nil, err
 	}

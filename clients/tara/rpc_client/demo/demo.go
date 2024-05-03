@@ -2,27 +2,25 @@ package main
 
 import (
 	"log"
-	"math/big"
 
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/tara/rpc_client"
-	"github.com/ethereum/go-ethereum/common"
+	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/rpc_client"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/tara_net_config"
 )
 
 func main() {
 	log.Print("Tara rpc client demo")
 
-	// config, err := net_config.GenNetConfig(clients_common.Mainnet)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	config, err := tara_net_config.GenNetConfig(clients_common.Testnet)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	var config clients_common.NetConfig
-	config.HttpUrl = "http://localhost:7017"
-	config.ChainID = big.NewInt(649)
-	config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
+	// var config clients_common.NetConfig
+	// config.HttpUrl = "http://localhost:7017"
+	// config.ChainID = big.NewInt(649)
 
-	rpcClient, err := rpc_client.NewRpcClient(config, clients_common.Http)
+	rpcClient, err := rpc_client.NewRpcClient(*config, clients_common.Http)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -3,8 +3,8 @@ package rpc_client
 import (
 	"context"
 
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
-	tara_rpc_types "github.com/Taraxa-project/taraxa-contracts-go-clients/tara/rpc_client/types"
+	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	tara_rpc_types "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/rpc_client/types"
 
 	"github.com/ethereum/go-ethereum"
 )
@@ -23,6 +23,13 @@ func NewRpcClient(config clients_common.NetConfig, communicationProtocol clients
 	}
 
 	return rpcClient, nil
+}
+
+func NewSharedRpcClient(sharedClient *clients_common.ContractClient) *RpcClient {
+	rpcClient := new(RpcClient)
+	rpcClient.ContractClient = sharedClient
+
+	return rpcClient
 }
 
 func (RpcClient *RpcClient) GetPillarBlockData(period uint64, includeBinaryData bool) (*tara_rpc_types.PillarBlockData, error) {

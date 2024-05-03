@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients_common"
-	dpos_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/tara/dpos_contract_client"
-	"github.com/Taraxa-project/taraxa-contracts-go-clients/tara/net_config"
+	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	dpos_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/dpos_contract_client"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/tara_net_config"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 	// config.ChainID = big.NewInt(649)
 	// config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
 
-	config, err := net_config.GenNetConfig(clients_common.Mainnet)
+	config, err := tara_net_config.GenNetConfig(clients_common.Mainnet)
 	if err != nil {
 		log.Fatal(err)
 	}
