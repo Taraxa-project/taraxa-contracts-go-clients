@@ -1,4 +1,4 @@
-package clients_common
+package client_base
 
 import (
 	"context"
@@ -34,18 +34,18 @@ type NetConfig struct {
 	ContractAddress common.Address `json:"contract_address"`
 }
 
-type ContractClient struct {
-	EthClient *ethclient.Client
-	Config    NetConfig
-}
-
 type Transactor struct {
 	TransactOpts *bind.TransactOpts
 	Address      common.Address
 	Nonce        uint64
 }
 
-func NewContractClient(config NetConfig, communicationProtocol CommunicationProtocol) (*ContractClient, error) {
+type ClientBase struct {
+	EthClient *ethclient.Client
+	Config    NetConfig
+}
+
+func NewClientBase(config NetConfig, communicationProtocol CommunicationProtocol) (*ClientBase, error) {
 	var err error
 	var networkUrl string
 
@@ -66,17 +66,17 @@ func NewContractClient(config NetConfig, communicationProtocol CommunicationProt
 		return nil, errors.New("invalid communicationProtocol argument")
 	}
 
-	contractClient := new(ContractClient)
-	contractClient.EthClient, err = ethclient.Dial(networkUrl)
+	clientBase := new(ClientBase)
+	clientBase.EthClient, err = ethclient.Dial(networkUrl)
 	if err != nil {
 		return nil, err
 	}
-	contractClient.Config = config
+	clientBase.Config = config
 
-	return contractClient, nil
+	return clientBase, nil
 }
 
-func (ContractClient *ContractClient) NewTransactor(privateKeyStr string) (*Transactor, error) {
+func (ClientBase *ClientBase) NewTransactor(privateKeyStr string) (*Transactor, error) {
 	privateKey, err := crypto.HexToECDSA(privateKeyStr)
 	if err != nil {
 		return nil, err
@@ -89,12 +89,12 @@ func (ContractClient *ContractClient) NewTransactor(privateKeyStr string) (*Tran
 		return nil, errors.New("error casting public key to ECDSA")
 	}
 
-	transactOpts, err := bind.NewKeyedTransactorWithChainID(privateKey, ContractClient.Config.ChainID)
+	transactOpts, err := bind.NewKeyedTransactorWithChainID(privateKey, ClientBase.Config.ChainID)
 	if err != nil {
 		return nil, err
 	}
 
-	nonce, err := ContractClient.EthClient.PendingNonceAt(context.Background(), address)
+	nonce, err := ClientBase.EthClient.PendingNonceAt(context.Background(), address)
 	if err != nil {
 		return nil, err
 	}
@@ -108,13 +108,13 @@ func (ContractClient *ContractClient) NewTransactor(privateKeyStr string) (*Tran
 	return transactor, nil
 }
 
-func (ContractClient *ContractClient) CreateNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
-	nonce, err := ContractClient.EthClient.PendingNonceAt(context.Background(), transactor.Address)
+func (ClientBase *ClientBase) CreateNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
+	nonce, err := ClientBase.EthClient.PendingNonceAt(context.Background(), transactor.Address)
 	if err != nil {
 		return nil, err
 	}
 
-	gasPrice, err := ContractClient.EthClient.SuggestGasPrice(context.Background())
+	gasPrice, err := ClientBase.EthClient.SuggestGasPrice(context.Background())
 	if err != nil {
 		return nil, err
 	}

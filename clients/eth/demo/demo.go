@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 	eth_client "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth/eth_net_config"
 	"github.com/ethereum/go-ethereum/common"
@@ -12,7 +12,7 @@ import (
 func main() {
 	log.Print("Eth client demo")
 
-	netConfig, err := eth_net_config.GenNetConfig(clients_common.Testnet)
+	netConfig, err := eth_net_config.GenNetConfig(client_base.Testnet)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,7 +22,7 @@ func main() {
 	config.BridgeContractAddress = common.HexToAddress("0x0")
 	config.TaraClientContractAddress = common.HexToAddress("0x0")
 
-	ethClient, err := eth_client.NewEthClient(config, clients_common.Http)
+	ethClient, err := eth_client.NewEthClient(config, client_base.Http)
 	if err != nil {
 		log.Fatal(err)
 	}

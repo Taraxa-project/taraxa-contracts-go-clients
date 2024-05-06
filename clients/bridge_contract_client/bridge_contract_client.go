@@ -2,7 +2,7 @@ package bridge_contract_client
 
 import (
 	bridge_contract_interface "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/bridge_contract_client/contract_interface"
-	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -10,15 +10,15 @@ import (
 )
 
 type BridgeContractClient struct {
-	*clients_common.ContractClient
+	*client_base.ClientBase
 	bridgeInterface *bridge_contract_interface.BridgeContractInterface
 }
 
-func NewBridgeContractClient(config clients_common.NetConfig, communicationProtocol clients_common.CommunicationProtocol) (*BridgeContractClient, error) {
+func NewBridgeContractClient(config client_base.NetConfig, communicationProtocol client_base.CommunicationProtocol) (*BridgeContractClient, error) {
 	var err error
 
 	bridgeContractClient := new(BridgeContractClient)
-	bridgeContractClient.ContractClient, err = clients_common.NewContractClient(config, communicationProtocol)
+	bridgeContractClient.ClientBase, err = client_base.NewClientBase(config, communicationProtocol)
 	if err != nil {
 		return nil, err
 	}
@@ -32,11 +32,11 @@ func NewBridgeContractClient(config clients_common.NetConfig, communicationProto
 	return bridgeContractClient, nil
 }
 
-func NewSharedBridgeContractClient(sharedClient *clients_common.ContractClient, contractAddress common.Address) (*BridgeContractClient, error) {
+func NewSharedBridgeContractClient(clientBase *client_base.ClientBase, contractAddress common.Address) (*BridgeContractClient, error) {
 	var err error
 
 	bridgeContractClient := new(BridgeContractClient)
-	bridgeContractClient.ContractClient = sharedClient
+	bridgeContractClient.ClientBase = clientBase
 
 	bridgeContractClient.bridgeInterface, err = bridge_contract_interface.NewBridgeContractInterface(contractAddress, bridgeContractClient.EthClient)
 	if err != nil {
@@ -50,7 +50,7 @@ func (BridgeContractClient *BridgeContractClient) GetStateWithProof() (bridge_co
 	return BridgeContractClient.bridgeInterface.GetStateWithProof(&bind.CallOpts{})
 }
 
-func (BridgeContractClient *BridgeContractClient) ApplyState(transactor *clients_common.Transactor, stateWithProof bridge_contract_interface.SharedStructsStateWithProof) (*types.Transaction, error) {
+func (BridgeContractClient *BridgeContractClient) ApplyState(transactor *client_base.Transactor, stateWithProof bridge_contract_interface.SharedStructsStateWithProof) (*types.Transaction, error) {
 	transactOpts, err := BridgeContractClient.CreateNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err

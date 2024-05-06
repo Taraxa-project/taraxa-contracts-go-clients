@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 	dpos_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/dpos_contract_client"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/tara_net_config"
 )
@@ -11,17 +11,17 @@ import (
 func main() {
 	log.Print("Dpos client demo")
 
-	// var config clients_common.NetConfig
+	// var config client_base.NetConfig
 	// config.HttpUrl = "http://localhost:7017"
 	// config.ChainID = big.NewInt(649)
 	// config.ContractAddress = common.HexToAddress("0x00000000000000000000000000000000000000FE")
 
-	config, err := tara_net_config.GenNetConfig(clients_common.Mainnet)
+	config, err := tara_net_config.GenNetConfig(client_base.Mainnet)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	dposContractClient, err := dpos_contract_client.NewDposContractClient(*config, clients_common.Http)
+	dposContractClient, err := dpos_contract_client.NewDposContractClient(*config, client_base.Http)
 	if err != nil {
 		log.Fatal(err)
 	}

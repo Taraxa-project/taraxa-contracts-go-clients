@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/rpc_client"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/tara_net_config"
 )
@@ -11,16 +11,16 @@ import (
 func main() {
 	log.Print("Tara rpc client demo")
 
-	config, err := tara_net_config.GenNetConfig(clients_common.Testnet)
+	config, err := tara_net_config.GenNetConfig(client_base.Testnet)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// var config clients_common.NetConfig
+	// var config client_base.NetConfig
 	// config.HttpUrl = "http://localhost:7017"
 	// config.ChainID = big.NewInt(649)
 
-	rpcClient, err := rpc_client.NewRpcClient(*config, clients_common.Http)
+	rpcClient, err := rpc_client.NewRpcClient(*config, client_base.Http)
 	if err != nil {
 		log.Fatal(err)
 	}

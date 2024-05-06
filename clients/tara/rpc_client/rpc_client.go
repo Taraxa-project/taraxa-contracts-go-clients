@@ -3,21 +3,21 @@ package rpc_client
 import (
 	"context"
 
-	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 	tara_rpc_types "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/tara/rpc_client/types"
 
 	"github.com/ethereum/go-ethereum"
 )
 
 type RpcClient struct {
-	*clients_common.ContractClient
+	*client_base.ClientBase
 }
 
-func NewRpcClient(config clients_common.NetConfig, communicationProtocol clients_common.CommunicationProtocol) (*RpcClient, error) {
+func NewRpcClient(config client_base.NetConfig, communicationProtocol client_base.CommunicationProtocol) (*RpcClient, error) {
 	var err error
 
 	rpcClient := new(RpcClient)
-	rpcClient.ContractClient, err = clients_common.NewContractClient(config, communicationProtocol)
+	rpcClient.ClientBase, err = client_base.NewClientBase(config, communicationProtocol)
 	if err != nil {
 		return nil, err
 	}
@@ -25,9 +25,9 @@ func NewRpcClient(config clients_common.NetConfig, communicationProtocol clients
 	return rpcClient, nil
 }
 
-func NewSharedRpcClient(sharedClient *clients_common.ContractClient) *RpcClient {
+func NewSharedRpcClient(sharedClient *client_base.ClientBase) *RpcClient {
 	rpcClient := new(RpcClient)
-	rpcClient.ContractClient = sharedClient
+	rpcClient.ClientBase = sharedClient
 
 	return rpcClient
 }

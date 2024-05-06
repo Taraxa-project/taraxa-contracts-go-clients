@@ -4,19 +4,19 @@ import (
 	"log"
 
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/bridge_contract_client"
-	clients_common "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/common"
+	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth/eth_net_config"
 )
 
 func main() {
 	log.Print("Bridge contract client demo")
 
-	config, err := eth_net_config.GenNetConfig(clients_common.Testnet)
+	config, err := eth_net_config.GenNetConfig(client_base.Testnet)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	bridgeContractClient, err := bridge_contract_client.NewBridgeContractClient(*config, clients_common.Http)
+	bridgeContractClient, err := bridge_contract_client.NewBridgeContractClient(*config, client_base.Http)
 	if err != nil {
 		log.Fatal(err)
 	}
