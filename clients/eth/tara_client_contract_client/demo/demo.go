@@ -6,6 +6,7 @@ import (
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/client_base"
 	"github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth/eth_net_config"
 	tara_client_contract_client "github.com/Taraxa-project/taraxa-contracts-go-clients/clients/eth/tara_client_contract_client"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 func main() {
@@ -15,17 +16,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	config.ContractAddress = common.HexToAddress("0x7011596be357c709700710C9960cb366C41A4106")
 
 	taraClientContractClient, err := tara_client_contract_client.NewTaraClientContractClient(*config, client_base.Http)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	pendingPillarBlock, err := taraClientContractClient.GetFinalizedPillarBlock()
+	finalizedPillarBlock, err := taraClientContractClient.GetFinalizedPillarBlock()
 	if err != nil {
 		log.Print("GetFinalizedPillarBlock err: ", err)
 	} else {
-		log.Printf("GetFinalizedPillarBlock: %d\n\n", pendingPillarBlock)
+		log.Printf("GetFinalizedPillarBlock: %d\n\n", finalizedPillarBlock)
 	}
 
 	// // TODO: add here valid private key

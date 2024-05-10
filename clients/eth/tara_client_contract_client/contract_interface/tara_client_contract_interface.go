@@ -64,7 +64,7 @@ type PillarBlockWithChanges struct {
 
 // TaraClientContractInterfaceMetaData contains all meta data concerning the TaraClientContractInterface contract.
 var TaraClientContractInterfaceMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"internalType\":\"structPillarBlock.WithChanges\",\"name\":\"_genesisBlock\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"_threshold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_pillarBlockInterval\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"expected\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"actual\",\"type\":\"bytes32\"}],\"name\":\"HashesNotMatching\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"expected\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"actual\",\"type\":\"uint256\"}],\"name\":\"InvalidBlockInterval\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"name\":\"ThresholdNotMet\",\"type\":\"error\"},{\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"internalType\":\"structPillarBlock.WithChanges[]\",\"name\":\"blocks\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"vs\",\"type\":\"bytes32\"}],\"internalType\":\"structCompactSignature[]\",\"name\":\"lastBlockSigs\",\"type\":\"tuple[]\"}],\"name\":\"finalizeBlocks\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finalized\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFinalized\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"internalType\":\"structPillarBlock.FinalizedBlock\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFinalizedBridgeRoot\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"h\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"vs\",\"type\":\"bytes32\"}],\"internalType\":\"structCompactSignature[]\",\"name\":\"signatures\",\"type\":\"tuple[]\"}],\"name\":\"getSignaturesWeight\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pillarBlockInterval\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"name\":\"processValidatorChanges\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_threshold\",\"type\":\"uint256\"}],\"name\":\"setThreshold\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"threshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalWeight\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"validatorVoteCounts\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"name\":\"ECDSAInvalidSignature\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"ECDSAInvalidSignatureLength\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"ECDSAInvalidSignatureS\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"expected\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"actual\",\"type\":\"bytes32\"}],\"name\":\"HashesNotMatching\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"expected\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"actual\",\"type\":\"uint256\"}],\"name\":\"InvalidBlockInterval\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidInitialization\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotInitializing\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"name\":\"ThresholdNotMet\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structPillarBlock.FinalizedBlock\",\"name\":\"finalized\",\"type\":\"tuple\"}],\"name\":\"BlockFinalized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structPillarBlock.FinalizedBlock\",\"name\":\"finalized\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pillarBlockInterval\",\"type\":\"uint256\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"version\",\"type\":\"uint64\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"}],\"name\":\"ThresholdChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"name\":\"ValidatorWeightChanged\",\"type\":\"event\"},{\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"internalType\":\"structPillarBlock.WithChanges[]\",\"name\":\"blocks\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"vs\",\"type\":\"bytes32\"}],\"internalType\":\"structCompactSignature[]\",\"name\":\"lastBlockSigs\",\"type\":\"tuple[]\"}],\"name\":\"finalizeBlocks\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finalized\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFinalized\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"internalType\":\"structPillarBlock.FinalizedBlock\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFinalizedBridgeRoot\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"h\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"vs\",\"type\":\"bytes32\"}],\"internalType\":\"structCompactSignature[]\",\"name\":\"signatures\",\"type\":\"tuple[]\"}],\"name\":\"getSignaturesWeight\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"internalType\":\"structPillarBlock.WithChanges\",\"name\":\"_genesisBlock\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"_threshold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_pillarBlockInterval\",\"type\":\"uint256\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pillarBlockInterval\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"name\":\"processValidatorChanges\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_threshold\",\"type\":\"uint256\"}],\"name\":\"setThreshold\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"threshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalWeight\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"validatorVoteCounts\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 }
 
 // TaraClientContractInterfaceABI is the input ABI used to generate the binding from.
@@ -356,6 +356,37 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) Ge
 	return _TaraClientContractInterface.Contract.GetSignaturesWeight(&_TaraClientContractInterface.CallOpts, h, signatures)
 }
 
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() view returns(address)
+func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _TaraClientContractInterface.contract.Call(opts, &out, "owner")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() view returns(address)
+func (_TaraClientContractInterface *TaraClientContractInterfaceSession) Owner() (common.Address, error) {
+	return _TaraClientContractInterface.Contract.Owner(&_TaraClientContractInterface.CallOpts)
+}
+
+// Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
+//
+// Solidity: function owner() view returns(address)
+func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) Owner() (common.Address, error) {
+	return _TaraClientContractInterface.Contract.Owner(&_TaraClientContractInterface.CallOpts)
+}
+
 // PillarBlockInterval is a free data retrieval call binding the contract method 0x6ed0afdd.
 //
 // Solidity: function pillarBlockInterval() view returns(uint256)
@@ -501,6 +532,27 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession
 	return _TaraClientContractInterface.Contract.FinalizeBlocks(&_TaraClientContractInterface.TransactOpts, blocks, lastBlockSigs)
 }
 
+// Initialize is a paid mutator transaction binding the contract method 0xcb6a809a.
+//
+// Solidity: function initialize(((uint256,bytes32,bytes32,bytes32),(address,int32)[]) _genesisBlock, uint256 _threshold, uint256 _pillarBlockInterval) returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceTransactor) Initialize(opts *bind.TransactOpts, _genesisBlock PillarBlockWithChanges, _threshold *big.Int, _pillarBlockInterval *big.Int) (*types.Transaction, error) {
+	return _TaraClientContractInterface.contract.Transact(opts, "initialize", _genesisBlock, _threshold, _pillarBlockInterval)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xcb6a809a.
+//
+// Solidity: function initialize(((uint256,bytes32,bytes32,bytes32),(address,int32)[]) _genesisBlock, uint256 _threshold, uint256 _pillarBlockInterval) returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceSession) Initialize(_genesisBlock PillarBlockWithChanges, _threshold *big.Int, _pillarBlockInterval *big.Int) (*types.Transaction, error) {
+	return _TaraClientContractInterface.Contract.Initialize(&_TaraClientContractInterface.TransactOpts, _genesisBlock, _threshold, _pillarBlockInterval)
+}
+
+// Initialize is a paid mutator transaction binding the contract method 0xcb6a809a.
+//
+// Solidity: function initialize(((uint256,bytes32,bytes32,bytes32),(address,int32)[]) _genesisBlock, uint256 _threshold, uint256 _pillarBlockInterval) returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) Initialize(_genesisBlock PillarBlockWithChanges, _threshold *big.Int, _pillarBlockInterval *big.Int) (*types.Transaction, error) {
+	return _TaraClientContractInterface.Contract.Initialize(&_TaraClientContractInterface.TransactOpts, _genesisBlock, _threshold, _pillarBlockInterval)
+}
+
 // ProcessValidatorChanges is a paid mutator transaction binding the contract method 0x8e3aa66d.
 //
 // Solidity: function processValidatorChanges((address,int32)[] validatorChanges) returns()
@@ -522,6 +574,27 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession
 	return _TaraClientContractInterface.Contract.ProcessValidatorChanges(&_TaraClientContractInterface.TransactOpts, validatorChanges)
 }
 
+// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+//
+// Solidity: function renounceOwnership() returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TaraClientContractInterface.contract.Transact(opts, "renounceOwnership")
+}
+
+// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+//
+// Solidity: function renounceOwnership() returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceSession) RenounceOwnership() (*types.Transaction, error) {
+	return _TaraClientContractInterface.Contract.RenounceOwnership(&_TaraClientContractInterface.TransactOpts)
+}
+
+// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+//
+// Solidity: function renounceOwnership() returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _TaraClientContractInterface.Contract.RenounceOwnership(&_TaraClientContractInterface.TransactOpts)
+}
+
 // SetThreshold is a paid mutator transaction binding the contract method 0x960bfe04.
 //
 // Solidity: function setThreshold(uint256 _threshold) returns()
@@ -541,4 +614,861 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceSession) SetThres
 // Solidity: function setThreshold(uint256 _threshold) returns()
 func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) SetThreshold(_threshold *big.Int) (*types.Transaction, error) {
 	return _TaraClientContractInterface.Contract.SetThreshold(&_TaraClientContractInterface.TransactOpts, _threshold)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(address newOwner) returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _TaraClientContractInterface.contract.Transact(opts, "transferOwnership", newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(address newOwner) returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _TaraClientContractInterface.Contract.TransferOwnership(&_TaraClientContractInterface.TransactOpts, newOwner)
+}
+
+// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+//
+// Solidity: function transferOwnership(address newOwner) returns()
+func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _TaraClientContractInterface.Contract.TransferOwnership(&_TaraClientContractInterface.TransactOpts, newOwner)
+}
+
+// TaraClientContractInterfaceBlockFinalizedIterator is returned from FilterBlockFinalized and is used to iterate over the raw logs and unpacked data for BlockFinalized events raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceBlockFinalizedIterator struct {
+	Event *TaraClientContractInterfaceBlockFinalized // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *TaraClientContractInterfaceBlockFinalizedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(TaraClientContractInterfaceBlockFinalized)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(TaraClientContractInterfaceBlockFinalized)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *TaraClientContractInterfaceBlockFinalizedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *TaraClientContractInterfaceBlockFinalizedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// TaraClientContractInterfaceBlockFinalized represents a BlockFinalized event raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceBlockFinalized struct {
+	Finalized PillarBlockFinalizedBlock
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
+// FilterBlockFinalized is a free log retrieval operation binding the contract event 0xfe3488e1f4169f43b6b09a6d3e43e05d5d4932a5baf9d378b4aac9550939c44b.
+//
+// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterBlockFinalized(opts *bind.FilterOpts) (*TaraClientContractInterfaceBlockFinalizedIterator, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "BlockFinalized")
+	if err != nil {
+		return nil, err
+	}
+	return &TaraClientContractInterfaceBlockFinalizedIterator{contract: _TaraClientContractInterface.contract, event: "BlockFinalized", logs: logs, sub: sub}, nil
+}
+
+// WatchBlockFinalized is a free log subscription operation binding the contract event 0xfe3488e1f4169f43b6b09a6d3e43e05d5d4932a5baf9d378b4aac9550939c44b.
+//
+// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchBlockFinalized(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceBlockFinalized) (event.Subscription, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "BlockFinalized")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(TaraClientContractInterfaceBlockFinalized)
+				if err := _TaraClientContractInterface.contract.UnpackLog(event, "BlockFinalized", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseBlockFinalized is a log parse operation binding the contract event 0xfe3488e1f4169f43b6b09a6d3e43e05d5d4932a5baf9d378b4aac9550939c44b.
+//
+// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseBlockFinalized(log types.Log) (*TaraClientContractInterfaceBlockFinalized, error) {
+	event := new(TaraClientContractInterfaceBlockFinalized)
+	if err := _TaraClientContractInterface.contract.UnpackLog(event, "BlockFinalized", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// TaraClientContractInterfaceInitializedIterator is returned from FilterInitialized and is used to iterate over the raw logs and unpacked data for Initialized events raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceInitializedIterator struct {
+	Event *TaraClientContractInterfaceInitialized // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *TaraClientContractInterfaceInitializedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(TaraClientContractInterfaceInitialized)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(TaraClientContractInterfaceInitialized)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *TaraClientContractInterfaceInitializedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *TaraClientContractInterfaceInitializedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// TaraClientContractInterfaceInitialized represents a Initialized event raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceInitialized struct {
+	Finalized           PillarBlockFinalizedBlock
+	Threshold           *big.Int
+	PillarBlockInterval *big.Int
+	Raw                 types.Log // Blockchain specific contextual infos
+}
+
+// FilterInitialized is a free log retrieval operation binding the contract event 0xf0346312461655e1e875f94ee2e889cdc8d81b6505fa4f63e07f7b7974888d5c.
+//
+// Solidity: event Initialized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized, uint256 threshold, uint256 pillarBlockInterval)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterInitialized(opts *bind.FilterOpts) (*TaraClientContractInterfaceInitializedIterator, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "Initialized")
+	if err != nil {
+		return nil, err
+	}
+	return &TaraClientContractInterfaceInitializedIterator{contract: _TaraClientContractInterface.contract, event: "Initialized", logs: logs, sub: sub}, nil
+}
+
+// WatchInitialized is a free log subscription operation binding the contract event 0xf0346312461655e1e875f94ee2e889cdc8d81b6505fa4f63e07f7b7974888d5c.
+//
+// Solidity: event Initialized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized, uint256 threshold, uint256 pillarBlockInterval)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchInitialized(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceInitialized) (event.Subscription, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "Initialized")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(TaraClientContractInterfaceInitialized)
+				if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseInitialized is a log parse operation binding the contract event 0xf0346312461655e1e875f94ee2e889cdc8d81b6505fa4f63e07f7b7974888d5c.
+//
+// Solidity: event Initialized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized, uint256 threshold, uint256 pillarBlockInterval)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseInitialized(log types.Log) (*TaraClientContractInterfaceInitialized, error) {
+	event := new(TaraClientContractInterfaceInitialized)
+	if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// TaraClientContractInterfaceInitialized0Iterator is returned from FilterInitialized0 and is used to iterate over the raw logs and unpacked data for Initialized0 events raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceInitialized0Iterator struct {
+	Event *TaraClientContractInterfaceInitialized0 // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *TaraClientContractInterfaceInitialized0Iterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(TaraClientContractInterfaceInitialized0)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(TaraClientContractInterfaceInitialized0)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *TaraClientContractInterfaceInitialized0Iterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *TaraClientContractInterfaceInitialized0Iterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// TaraClientContractInterfaceInitialized0 represents a Initialized0 event raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceInitialized0 struct {
+	Version uint64
+	Raw     types.Log // Blockchain specific contextual infos
+}
+
+// FilterInitialized0 is a free log retrieval operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
+//
+// Solidity: event Initialized(uint64 version)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterInitialized0(opts *bind.FilterOpts) (*TaraClientContractInterfaceInitialized0Iterator, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "Initialized0")
+	if err != nil {
+		return nil, err
+	}
+	return &TaraClientContractInterfaceInitialized0Iterator{contract: _TaraClientContractInterface.contract, event: "Initialized0", logs: logs, sub: sub}, nil
+}
+
+// WatchInitialized0 is a free log subscription operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
+//
+// Solidity: event Initialized(uint64 version)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchInitialized0(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceInitialized0) (event.Subscription, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "Initialized0")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(TaraClientContractInterfaceInitialized0)
+				if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized0", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseInitialized0 is a log parse operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
+//
+// Solidity: event Initialized(uint64 version)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseInitialized0(log types.Log) (*TaraClientContractInterfaceInitialized0, error) {
+	event := new(TaraClientContractInterfaceInitialized0)
+	if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized0", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// TaraClientContractInterfaceOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceOwnershipTransferredIterator struct {
+	Event *TaraClientContractInterfaceOwnershipTransferred // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *TaraClientContractInterfaceOwnershipTransferredIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(TaraClientContractInterfaceOwnershipTransferred)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(TaraClientContractInterfaceOwnershipTransferred)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *TaraClientContractInterfaceOwnershipTransferredIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *TaraClientContractInterfaceOwnershipTransferredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// TaraClientContractInterfaceOwnershipTransferred represents a OwnershipTransferred event raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceOwnershipTransferred struct {
+	PreviousOwner common.Address
+	NewOwner      common.Address
+	Raw           types.Log // Blockchain specific contextual infos
+}
+
+// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*TaraClientContractInterfaceOwnershipTransferredIterator, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return &TaraClientContractInterfaceOwnershipTransferredIterator{contract: _TaraClientContractInterface.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+}
+
+// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(TaraClientContractInterfaceOwnershipTransferred)
+				if err := _TaraClientContractInterface.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseOwnershipTransferred(log types.Log) (*TaraClientContractInterfaceOwnershipTransferred, error) {
+	event := new(TaraClientContractInterfaceOwnershipTransferred)
+	if err := _TaraClientContractInterface.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// TaraClientContractInterfaceThresholdChangedIterator is returned from FilterThresholdChanged and is used to iterate over the raw logs and unpacked data for ThresholdChanged events raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceThresholdChangedIterator struct {
+	Event *TaraClientContractInterfaceThresholdChanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *TaraClientContractInterfaceThresholdChangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(TaraClientContractInterfaceThresholdChanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(TaraClientContractInterfaceThresholdChanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *TaraClientContractInterfaceThresholdChangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *TaraClientContractInterfaceThresholdChangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// TaraClientContractInterfaceThresholdChanged represents a ThresholdChanged event raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceThresholdChanged struct {
+	Threshold *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
+// FilterThresholdChanged is a free log retrieval operation binding the contract event 0x6c4ce60fd690e1216286a10b875c5662555f10774484e58142cedd7a90781baa.
+//
+// Solidity: event ThresholdChanged(uint256 threshold)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterThresholdChanged(opts *bind.FilterOpts) (*TaraClientContractInterfaceThresholdChangedIterator, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "ThresholdChanged")
+	if err != nil {
+		return nil, err
+	}
+	return &TaraClientContractInterfaceThresholdChangedIterator{contract: _TaraClientContractInterface.contract, event: "ThresholdChanged", logs: logs, sub: sub}, nil
+}
+
+// WatchThresholdChanged is a free log subscription operation binding the contract event 0x6c4ce60fd690e1216286a10b875c5662555f10774484e58142cedd7a90781baa.
+//
+// Solidity: event ThresholdChanged(uint256 threshold)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchThresholdChanged(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceThresholdChanged) (event.Subscription, error) {
+
+	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "ThresholdChanged")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(TaraClientContractInterfaceThresholdChanged)
+				if err := _TaraClientContractInterface.contract.UnpackLog(event, "ThresholdChanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseThresholdChanged is a log parse operation binding the contract event 0x6c4ce60fd690e1216286a10b875c5662555f10774484e58142cedd7a90781baa.
+//
+// Solidity: event ThresholdChanged(uint256 threshold)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseThresholdChanged(log types.Log) (*TaraClientContractInterfaceThresholdChanged, error) {
+	event := new(TaraClientContractInterfaceThresholdChanged)
+	if err := _TaraClientContractInterface.contract.UnpackLog(event, "ThresholdChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// TaraClientContractInterfaceValidatorWeightChangedIterator is returned from FilterValidatorWeightChanged and is used to iterate over the raw logs and unpacked data for ValidatorWeightChanged events raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceValidatorWeightChangedIterator struct {
+	Event *TaraClientContractInterfaceValidatorWeightChanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *TaraClientContractInterfaceValidatorWeightChangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(TaraClientContractInterfaceValidatorWeightChanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(TaraClientContractInterfaceValidatorWeightChanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *TaraClientContractInterfaceValidatorWeightChangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *TaraClientContractInterfaceValidatorWeightChangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// TaraClientContractInterfaceValidatorWeightChanged represents a ValidatorWeightChanged event raised by the TaraClientContractInterface contract.
+type TaraClientContractInterfaceValidatorWeightChanged struct {
+	Validator common.Address
+	Weight    *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
+// FilterValidatorWeightChanged is a free log retrieval operation binding the contract event 0xe3490611629a41809c531d61c4adf71d3e682bfe292318e23f7227f1570d921b.
+//
+// Solidity: event ValidatorWeightChanged(address indexed validator, uint256 weight)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterValidatorWeightChanged(opts *bind.FilterOpts, validator []common.Address) (*TaraClientContractInterfaceValidatorWeightChangedIterator, error) {
+
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+
+	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "ValidatorWeightChanged", validatorRule)
+	if err != nil {
+		return nil, err
+	}
+	return &TaraClientContractInterfaceValidatorWeightChangedIterator{contract: _TaraClientContractInterface.contract, event: "ValidatorWeightChanged", logs: logs, sub: sub}, nil
+}
+
+// WatchValidatorWeightChanged is a free log subscription operation binding the contract event 0xe3490611629a41809c531d61c4adf71d3e682bfe292318e23f7227f1570d921b.
+//
+// Solidity: event ValidatorWeightChanged(address indexed validator, uint256 weight)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchValidatorWeightChanged(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceValidatorWeightChanged, validator []common.Address) (event.Subscription, error) {
+
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+
+	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "ValidatorWeightChanged", validatorRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(TaraClientContractInterfaceValidatorWeightChanged)
+				if err := _TaraClientContractInterface.contract.UnpackLog(event, "ValidatorWeightChanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseValidatorWeightChanged is a log parse operation binding the contract event 0xe3490611629a41809c531d61c4adf71d3e682bfe292318e23f7227f1570d921b.
+//
+// Solidity: event ValidatorWeightChanged(address indexed validator, uint256 weight)
+func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseValidatorWeightChanged(log types.Log) (*TaraClientContractInterfaceValidatorWeightChanged, error) {
+	event := new(TaraClientContractInterfaceValidatorWeightChanged)
+	if err := _TaraClientContractInterface.contract.UnpackLog(event, "ValidatorWeightChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
 }
