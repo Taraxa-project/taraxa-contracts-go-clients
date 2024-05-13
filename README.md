@@ -57,14 +57,6 @@ git submodule update --init --recursive
 cd submodules/bridge
 git submodule update --init --recursive
 
-Tmeporarly replace:
-// import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-
-by:
-import "openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
-```
-in src/eth/TaraClient.sol
-
 
 Generate abi & client:
 ```
@@ -74,7 +66,8 @@ abigen --abi=clients/eth/tara_client_contract_client/contract_interface/TaraClie
 abigen --abi=clients/eth/tara_client_contract_client/contract_interface/PillarBlock.abi --pkg=pillar_block_interface --out=clients/eth/tara_client_contract_client/contract_interface/pillar_block/pillar_block_interface.go
 
 
-solc --abi --overwrite --optimize --base-path .  --include-path submodules/bridge/lib/ submodules/bridge/src/lib/BridgeBase.sol --output-dir clients/bridge_contract_client/contract_interface/
+solc --abi --overwrite --optimize --base-path .  --include-path submodules/bridge/lib/ @openzeppelin=submodules/bridge/lib/openzeppelin-contracts submodules/bridge/src/lib/BridgeBase.sol --output-dir clients/bridge_contract_client/contract_interface/
 
 abigen --abi=clients/bridge_contract_client/contract_interface/BridgeBase.abi --pkg=bridge_contract_interface --out=clients/bridge_contract_client/contract_interface/bridge_contract_interface.go
+
 ```

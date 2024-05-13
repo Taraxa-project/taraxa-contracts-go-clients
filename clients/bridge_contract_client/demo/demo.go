@@ -16,7 +16,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	config.ContractAddress = common.HexToAddress("0xe6A0858eD02EDdfacC84D72cEa2A6510cE22d855")
+	config.ContractAddress = common.HexToAddress("0x762dA247D9F269b1689d4baaD587243eccF7910c")
 
 	bridgeContractClient, err := bridge_contract_client.NewBridgeContractClient(*config, client_base.Http)
 	if err != nil {

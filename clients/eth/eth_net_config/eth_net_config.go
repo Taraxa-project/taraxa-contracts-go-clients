@@ -19,7 +19,7 @@ func GenNetConfig(network client_base.Network) (*client_base.NetConfig, error) {
 	case client_base.Testnet:
 		config.HttpUrl = "https://holesky.drpc.org"
 		config.ChainID = big.NewInt(17000)
-		config.ContractAddress = common.HexToAddress("0x52a7c8db4a32016e4b8b6b4b44590c52079f32a9")
+		config.ContractAddress = common.HexToAddress("0x0")
 		break
 	case client_base.Devnet:
 		// TODO
