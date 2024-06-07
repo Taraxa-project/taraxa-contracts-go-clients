@@ -1,6 +1,6 @@
 [submodule "submodules/bridge"]
 	path = submodules/bridge
-	url = https://github.com/Taraxa-project/bridge
+	url = ../bridge
 [submodule "submodules/taraxa-evm"]
 	path = submodules/taraxa-evm
-	url = https://github.com/Taraxa-project/taraxa-evm
+	url = ../taraxa-evm
