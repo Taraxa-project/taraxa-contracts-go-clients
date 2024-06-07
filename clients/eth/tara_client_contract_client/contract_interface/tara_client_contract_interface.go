@@ -39,8 +39,9 @@ type CompactSignature struct {
 type PillarBlockFinalizationData struct {
 	Period     *big.Int
 	StateRoot  [32]byte
-	BridgeRoot [32]byte
 	PrevHash   [32]byte
+	BridgeRoot [32]byte
+	Epoch      *big.Int
 }
 
 // PillarBlockFinalizedBlock is an auto generated low-level Go binding around an user-defined struct.
@@ -64,7 +65,7 @@ type PillarBlockWithChanges struct {
 
 // TaraClientContractInterfaceMetaData contains all meta data concerning the TaraClientContractInterface contract.
 var TaraClientContractInterfaceMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"ECDSAInvalidSignature\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"ECDSAInvalidSignatureLength\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"ECDSAInvalidSignatureS\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"expected\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"actual\",\"type\":\"bytes32\"}],\"name\":\"HashesNotMatching\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"expected\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"actual\",\"type\":\"uint256\"}],\"name\":\"InvalidBlockInterval\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidInitialization\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotInitializing\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"name\":\"ThresholdNotMet\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structPillarBlock.FinalizedBlock\",\"name\":\"finalized\",\"type\":\"tuple\"}],\"name\":\"BlockFinalized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"pillarBlockInterval\",\"type\":\"uint256\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"version\",\"type\":\"uint64\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"threshold\",\"type\":\"uint256\"}],\"name\":\"ThresholdChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"name\":\"ValidatorWeightChanged\",\"type\":\"event\"},{\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"internalType\":\"structPillarBlock.WithChanges[]\",\"name\":\"blocks\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"vs\",\"type\":\"bytes32\"}],\"internalType\":\"structCompactSignature[]\",\"name\":\"lastBlockSigs\",\"type\":\"tuple[]\"}],\"name\":\"finalizeBlocks\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finalized\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFinalized\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"period\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"stateRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"bridgeRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"prevHash\",\"type\":\"bytes32\"}],\"internalType\":\"structPillarBlock.FinalizationData\",\"name\":\"block\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"finalizedAt\",\"type\":\"uint256\"}],\"internalType\":\"structPillarBlock.FinalizedBlock\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFinalizedBridgeRoot\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"h\",\"type\":\"bytes32\"},{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"vs\",\"type\":\"bytes32\"}],\"internalType\":\"structCompactSignature[]\",\"name\":\"signatures\",\"type\":\"tuple[]\"}],\"name\":\"getSignaturesWeight\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"weight\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_threshold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_pillarBlockInterval\",\"type\":\"uint256\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pillarBlockInterval\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"int32\",\"name\":\"change\",\"type\":\"int32\"}],\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"name\":\"validatorChanges\",\"type\":\"tuple[]\"}],\"name\":\"processValidatorChanges\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_threshold\",\"type\":\"uint256\"}],\"name\":\"setThreshold\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"threshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalWeight\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"validatorVoteCounts\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"type\":\"constructor\",\"inputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"finalizeBlocks\",\"inputs\":[{\"name\":\"blocks\",\"type\":\"tuple[]\",\"internalType\":\"structPillarBlock.WithChanges[]\",\"components\":[{\"name\":\"block\",\"type\":\"tuple\",\"internalType\":\"structPillarBlock.FinalizationData\",\"components\":[{\"name\":\"period\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"stateRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"prevHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"bridgeRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"epoch\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"validatorChanges\",\"type\":\"tuple[]\",\"internalType\":\"structPillarBlock.VoteCountChange[]\",\"components\":[{\"name\":\"validator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"change\",\"type\":\"int32\",\"internalType\":\"int32\"}]}]},{\"name\":\"lastBlockSigs\",\"type\":\"tuple[]\",\"internalType\":\"structCompactSignature[]\",\"components\":[{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"vs\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"finalized\",\"inputs\":[],\"outputs\":[{\"name\":\"blockHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"block\",\"type\":\"tuple\",\"internalType\":\"structPillarBlock.FinalizationData\",\"components\":[{\"name\":\"period\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"stateRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"prevHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"bridgeRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"epoch\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"finalizedAt\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"finalizedBridgeRoots\",\"inputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getFinalized\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"tuple\",\"internalType\":\"structPillarBlock.FinalizedBlock\",\"components\":[{\"name\":\"blockHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"block\",\"type\":\"tuple\",\"internalType\":\"structPillarBlock.FinalizationData\",\"components\":[{\"name\":\"period\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"stateRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"prevHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"bridgeRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"epoch\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"finalizedAt\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getFinalizedBridgeRoot\",\"inputs\":[{\"name\":\"epoch\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getSignaturesWeight\",\"inputs\":[{\"name\":\"h\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"signatures\",\"type\":\"tuple[]\",\"internalType\":\"structCompactSignature[]\",\"components\":[{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"vs\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}],\"outputs\":[{\"name\":\"weight\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"initialize\",\"inputs\":[{\"name\":\"_threshold\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"_pillarBlockInterval\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"owner\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"pillarBlockInterval\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"renounceOwnership\",\"inputs\":[],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"setThreshold\",\"inputs\":[{\"name\":\"_threshold\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"threshold\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"totalWeight\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"transferOwnership\",\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"validatorVoteCounts\",\"inputs\":[{\"name\":\"\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"event\",\"name\":\"BlockFinalized\",\"inputs\":[{\"name\":\"finalized\",\"type\":\"tuple\",\"indexed\":false,\"internalType\":\"structPillarBlock.FinalizedBlock\",\"components\":[{\"name\":\"blockHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"block\",\"type\":\"tuple\",\"internalType\":\"structPillarBlock.FinalizationData\",\"components\":[{\"name\":\"period\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"stateRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"prevHash\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"bridgeRoot\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"epoch\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"finalizedAt\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Initialized\",\"inputs\":[{\"name\":\"version\",\"type\":\"uint64\",\"indexed\":false,\"internalType\":\"uint64\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"OwnershipTransferred\",\"inputs\":[{\"name\":\"previousOwner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"newOwner\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ThresholdChanged\",\"inputs\":[{\"name\":\"threshold\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ValidatorWeightChanged\",\"inputs\":[{\"name\":\"validator\",\"type\":\"address\",\"indexed\":true,\"internalType\":\"address\"},{\"name\":\"weight\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignature\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignatureLength\",\"inputs\":[{\"name\":\"length\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignatureS\",\"inputs\":[{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"HashesNotMatching\",\"inputs\":[{\"name\":\"expected\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"actual\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"InvalidBlockInterval\",\"inputs\":[{\"name\":\"expected\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"actual\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"InvalidInitialization\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"NotInitializing\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"OwnableInvalidOwner\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"OwnableUnauthorizedAccount\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}]},{\"type\":\"error\",\"name\":\"ThresholdNotMet\",\"inputs\":[{\"name\":\"threshold\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"weight\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]}]",
 }
 
 // TaraClientContractInterfaceABI is the input ABI used to generate the binding from.
@@ -215,7 +216,7 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorRaw) Tr
 
 // Finalized is a free data retrieval call binding the contract method 0xb3f05b97.
 //
-// Solidity: function finalized() view returns(bytes32 blockHash, (uint256,bytes32,bytes32,bytes32) block, uint256 finalizedAt)
+// Solidity: function finalized() view returns(bytes32 blockHash, (uint256,bytes32,bytes32,bytes32,uint256) block, uint256 finalizedAt)
 func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) Finalized(opts *bind.CallOpts) (struct {
 	BlockHash   [32]byte
 	Block       PillarBlockFinalizationData
@@ -243,7 +244,7 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) Finalized
 
 // Finalized is a free data retrieval call binding the contract method 0xb3f05b97.
 //
-// Solidity: function finalized() view returns(bytes32 blockHash, (uint256,bytes32,bytes32,bytes32) block, uint256 finalizedAt)
+// Solidity: function finalized() view returns(bytes32 blockHash, (uint256,bytes32,bytes32,bytes32,uint256) block, uint256 finalizedAt)
 func (_TaraClientContractInterface *TaraClientContractInterfaceSession) Finalized() (struct {
 	BlockHash   [32]byte
 	Block       PillarBlockFinalizationData
@@ -254,7 +255,7 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceSession) Finalize
 
 // Finalized is a free data retrieval call binding the contract method 0xb3f05b97.
 //
-// Solidity: function finalized() view returns(bytes32 blockHash, (uint256,bytes32,bytes32,bytes32) block, uint256 finalizedAt)
+// Solidity: function finalized() view returns(bytes32 blockHash, (uint256,bytes32,bytes32,bytes32,uint256) block, uint256 finalizedAt)
 func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) Finalized() (struct {
 	BlockHash   [32]byte
 	Block       PillarBlockFinalizationData
@@ -263,9 +264,40 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) Fi
 	return _TaraClientContractInterface.Contract.Finalized(&_TaraClientContractInterface.CallOpts)
 }
 
+// FinalizedBridgeRoots is a free data retrieval call binding the contract method 0x93ea1203.
+//
+// Solidity: function finalizedBridgeRoots(uint256 ) view returns(bytes32)
+func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) FinalizedBridgeRoots(opts *bind.CallOpts, arg0 *big.Int) ([32]byte, error) {
+	var out []interface{}
+	err := _TaraClientContractInterface.contract.Call(opts, &out, "finalizedBridgeRoots", arg0)
+
+	if err != nil {
+		return *new([32]byte), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
+
+	return out0, err
+
+}
+
+// FinalizedBridgeRoots is a free data retrieval call binding the contract method 0x93ea1203.
+//
+// Solidity: function finalizedBridgeRoots(uint256 ) view returns(bytes32)
+func (_TaraClientContractInterface *TaraClientContractInterfaceSession) FinalizedBridgeRoots(arg0 *big.Int) ([32]byte, error) {
+	return _TaraClientContractInterface.Contract.FinalizedBridgeRoots(&_TaraClientContractInterface.CallOpts, arg0)
+}
+
+// FinalizedBridgeRoots is a free data retrieval call binding the contract method 0x93ea1203.
+//
+// Solidity: function finalizedBridgeRoots(uint256 ) view returns(bytes32)
+func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) FinalizedBridgeRoots(arg0 *big.Int) ([32]byte, error) {
+	return _TaraClientContractInterface.Contract.FinalizedBridgeRoots(&_TaraClientContractInterface.CallOpts, arg0)
+}
+
 // GetFinalized is a free data retrieval call binding the contract method 0x6b28a5e4.
 //
-// Solidity: function getFinalized() view returns((bytes32,(uint256,bytes32,bytes32,bytes32),uint256))
+// Solidity: function getFinalized() view returns((bytes32,(uint256,bytes32,bytes32,bytes32,uint256),uint256))
 func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) GetFinalized(opts *bind.CallOpts) (PillarBlockFinalizedBlock, error) {
 	var out []interface{}
 	err := _TaraClientContractInterface.contract.Call(opts, &out, "getFinalized")
@@ -282,24 +314,24 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) GetFinali
 
 // GetFinalized is a free data retrieval call binding the contract method 0x6b28a5e4.
 //
-// Solidity: function getFinalized() view returns((bytes32,(uint256,bytes32,bytes32,bytes32),uint256))
+// Solidity: function getFinalized() view returns((bytes32,(uint256,bytes32,bytes32,bytes32,uint256),uint256))
 func (_TaraClientContractInterface *TaraClientContractInterfaceSession) GetFinalized() (PillarBlockFinalizedBlock, error) {
 	return _TaraClientContractInterface.Contract.GetFinalized(&_TaraClientContractInterface.CallOpts)
 }
 
 // GetFinalized is a free data retrieval call binding the contract method 0x6b28a5e4.
 //
-// Solidity: function getFinalized() view returns((bytes32,(uint256,bytes32,bytes32,bytes32),uint256))
+// Solidity: function getFinalized() view returns((bytes32,(uint256,bytes32,bytes32,bytes32,uint256),uint256))
 func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) GetFinalized() (PillarBlockFinalizedBlock, error) {
 	return _TaraClientContractInterface.Contract.GetFinalized(&_TaraClientContractInterface.CallOpts)
 }
 
-// GetFinalizedBridgeRoot is a free data retrieval call binding the contract method 0x5a93a4bb.
+// GetFinalizedBridgeRoot is a free data retrieval call binding the contract method 0xaa2bb43d.
 //
-// Solidity: function getFinalizedBridgeRoot() view returns(bytes32)
-func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) GetFinalizedBridgeRoot(opts *bind.CallOpts) ([32]byte, error) {
+// Solidity: function getFinalizedBridgeRoot(uint256 epoch) view returns(bytes32)
+func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) GetFinalizedBridgeRoot(opts *bind.CallOpts, epoch *big.Int) ([32]byte, error) {
 	var out []interface{}
-	err := _TaraClientContractInterface.contract.Call(opts, &out, "getFinalizedBridgeRoot")
+	err := _TaraClientContractInterface.contract.Call(opts, &out, "getFinalizedBridgeRoot", epoch)
 
 	if err != nil {
 		return *new([32]byte), err
@@ -311,18 +343,18 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceCaller) GetFinali
 
 }
 
-// GetFinalizedBridgeRoot is a free data retrieval call binding the contract method 0x5a93a4bb.
+// GetFinalizedBridgeRoot is a free data retrieval call binding the contract method 0xaa2bb43d.
 //
-// Solidity: function getFinalizedBridgeRoot() view returns(bytes32)
-func (_TaraClientContractInterface *TaraClientContractInterfaceSession) GetFinalizedBridgeRoot() ([32]byte, error) {
-	return _TaraClientContractInterface.Contract.GetFinalizedBridgeRoot(&_TaraClientContractInterface.CallOpts)
+// Solidity: function getFinalizedBridgeRoot(uint256 epoch) view returns(bytes32)
+func (_TaraClientContractInterface *TaraClientContractInterfaceSession) GetFinalizedBridgeRoot(epoch *big.Int) ([32]byte, error) {
+	return _TaraClientContractInterface.Contract.GetFinalizedBridgeRoot(&_TaraClientContractInterface.CallOpts, epoch)
 }
 
-// GetFinalizedBridgeRoot is a free data retrieval call binding the contract method 0x5a93a4bb.
+// GetFinalizedBridgeRoot is a free data retrieval call binding the contract method 0xaa2bb43d.
 //
-// Solidity: function getFinalizedBridgeRoot() view returns(bytes32)
-func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) GetFinalizedBridgeRoot() ([32]byte, error) {
-	return _TaraClientContractInterface.Contract.GetFinalizedBridgeRoot(&_TaraClientContractInterface.CallOpts)
+// Solidity: function getFinalizedBridgeRoot(uint256 epoch) view returns(bytes32)
+func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) GetFinalizedBridgeRoot(epoch *big.Int) ([32]byte, error) {
+	return _TaraClientContractInterface.Contract.GetFinalizedBridgeRoot(&_TaraClientContractInterface.CallOpts, epoch)
 }
 
 // GetSignaturesWeight is a free data retrieval call binding the contract method 0x97f8e2f0.
@@ -511,23 +543,23 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceCallerSession) Va
 	return _TaraClientContractInterface.Contract.ValidatorVoteCounts(&_TaraClientContractInterface.CallOpts, arg0)
 }
 
-// FinalizeBlocks is a paid mutator transaction binding the contract method 0x508a0785.
+// FinalizeBlocks is a paid mutator transaction binding the contract method 0x5d0d5734.
 //
-// Solidity: function finalizeBlocks(((uint256,bytes32,bytes32,bytes32),(address,int32)[])[] blocks, (bytes32,bytes32)[] lastBlockSigs) returns()
+// Solidity: function finalizeBlocks(((uint256,bytes32,bytes32,bytes32,uint256),(address,int32)[])[] blocks, (bytes32,bytes32)[] lastBlockSigs) returns()
 func (_TaraClientContractInterface *TaraClientContractInterfaceTransactor) FinalizeBlocks(opts *bind.TransactOpts, blocks []PillarBlockWithChanges, lastBlockSigs []CompactSignature) (*types.Transaction, error) {
 	return _TaraClientContractInterface.contract.Transact(opts, "finalizeBlocks", blocks, lastBlockSigs)
 }
 
-// FinalizeBlocks is a paid mutator transaction binding the contract method 0x508a0785.
+// FinalizeBlocks is a paid mutator transaction binding the contract method 0x5d0d5734.
 //
-// Solidity: function finalizeBlocks(((uint256,bytes32,bytes32,bytes32),(address,int32)[])[] blocks, (bytes32,bytes32)[] lastBlockSigs) returns()
+// Solidity: function finalizeBlocks(((uint256,bytes32,bytes32,bytes32,uint256),(address,int32)[])[] blocks, (bytes32,bytes32)[] lastBlockSigs) returns()
 func (_TaraClientContractInterface *TaraClientContractInterfaceSession) FinalizeBlocks(blocks []PillarBlockWithChanges, lastBlockSigs []CompactSignature) (*types.Transaction, error) {
 	return _TaraClientContractInterface.Contract.FinalizeBlocks(&_TaraClientContractInterface.TransactOpts, blocks, lastBlockSigs)
 }
 
-// FinalizeBlocks is a paid mutator transaction binding the contract method 0x508a0785.
+// FinalizeBlocks is a paid mutator transaction binding the contract method 0x5d0d5734.
 //
-// Solidity: function finalizeBlocks(((uint256,bytes32,bytes32,bytes32),(address,int32)[])[] blocks, (bytes32,bytes32)[] lastBlockSigs) returns()
+// Solidity: function finalizeBlocks(((uint256,bytes32,bytes32,bytes32,uint256),(address,int32)[])[] blocks, (bytes32,bytes32)[] lastBlockSigs) returns()
 func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) FinalizeBlocks(blocks []PillarBlockWithChanges, lastBlockSigs []CompactSignature) (*types.Transaction, error) {
 	return _TaraClientContractInterface.Contract.FinalizeBlocks(&_TaraClientContractInterface.TransactOpts, blocks, lastBlockSigs)
 }
@@ -551,27 +583,6 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceSession) Initiali
 // Solidity: function initialize(uint256 _threshold, uint256 _pillarBlockInterval) returns()
 func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) Initialize(_threshold *big.Int, _pillarBlockInterval *big.Int) (*types.Transaction, error) {
 	return _TaraClientContractInterface.Contract.Initialize(&_TaraClientContractInterface.TransactOpts, _threshold, _pillarBlockInterval)
-}
-
-// ProcessValidatorChanges is a paid mutator transaction binding the contract method 0x8e3aa66d.
-//
-// Solidity: function processValidatorChanges((address,int32)[] validatorChanges) returns()
-func (_TaraClientContractInterface *TaraClientContractInterfaceTransactor) ProcessValidatorChanges(opts *bind.TransactOpts, validatorChanges []PillarBlockVoteCountChange) (*types.Transaction, error) {
-	return _TaraClientContractInterface.contract.Transact(opts, "processValidatorChanges", validatorChanges)
-}
-
-// ProcessValidatorChanges is a paid mutator transaction binding the contract method 0x8e3aa66d.
-//
-// Solidity: function processValidatorChanges((address,int32)[] validatorChanges) returns()
-func (_TaraClientContractInterface *TaraClientContractInterfaceSession) ProcessValidatorChanges(validatorChanges []PillarBlockVoteCountChange) (*types.Transaction, error) {
-	return _TaraClientContractInterface.Contract.ProcessValidatorChanges(&_TaraClientContractInterface.TransactOpts, validatorChanges)
-}
-
-// ProcessValidatorChanges is a paid mutator transaction binding the contract method 0x8e3aa66d.
-//
-// Solidity: function processValidatorChanges((address,int32)[] validatorChanges) returns()
-func (_TaraClientContractInterface *TaraClientContractInterfaceTransactorSession) ProcessValidatorChanges(validatorChanges []PillarBlockVoteCountChange) (*types.Transaction, error) {
-	return _TaraClientContractInterface.Contract.ProcessValidatorChanges(&_TaraClientContractInterface.TransactOpts, validatorChanges)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
@@ -710,9 +721,9 @@ type TaraClientContractInterfaceBlockFinalized struct {
 	Raw       types.Log // Blockchain specific contextual infos
 }
 
-// FilterBlockFinalized is a free log retrieval operation binding the contract event 0xfe3488e1f4169f43b6b09a6d3e43e05d5d4932a5baf9d378b4aac9550939c44b.
+// FilterBlockFinalized is a free log retrieval operation binding the contract event 0xc3af94e02b408059c0f32325f41a0d0384b419789b788f11d9d3ec59fb55cd45.
 //
-// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized)
+// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32,uint256),uint256) finalized)
 func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterBlockFinalized(opts *bind.FilterOpts) (*TaraClientContractInterfaceBlockFinalizedIterator, error) {
 
 	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "BlockFinalized")
@@ -722,9 +733,9 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterB
 	return &TaraClientContractInterfaceBlockFinalizedIterator{contract: _TaraClientContractInterface.contract, event: "BlockFinalized", logs: logs, sub: sub}, nil
 }
 
-// WatchBlockFinalized is a free log subscription operation binding the contract event 0xfe3488e1f4169f43b6b09a6d3e43e05d5d4932a5baf9d378b4aac9550939c44b.
+// WatchBlockFinalized is a free log subscription operation binding the contract event 0xc3af94e02b408059c0f32325f41a0d0384b419789b788f11d9d3ec59fb55cd45.
 //
-// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized)
+// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32,uint256),uint256) finalized)
 func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchBlockFinalized(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceBlockFinalized) (event.Subscription, error) {
 
 	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "BlockFinalized")
@@ -759,9 +770,9 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchBl
 	}), nil
 }
 
-// ParseBlockFinalized is a log parse operation binding the contract event 0xfe3488e1f4169f43b6b09a6d3e43e05d5d4932a5baf9d378b4aac9550939c44b.
+// ParseBlockFinalized is a log parse operation binding the contract event 0xc3af94e02b408059c0f32325f41a0d0384b419789b788f11d9d3ec59fb55cd45.
 //
-// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32),uint256) finalized)
+// Solidity: event BlockFinalized((bytes32,(uint256,bytes32,bytes32,bytes32,uint256),uint256) finalized)
 func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseBlockFinalized(log types.Log) (*TaraClientContractInterfaceBlockFinalized, error) {
 	event := new(TaraClientContractInterfaceBlockFinalized)
 	if err := _TaraClientContractInterface.contract.UnpackLog(event, "BlockFinalized", log); err != nil {
@@ -840,14 +851,13 @@ func (it *TaraClientContractInterfaceInitializedIterator) Close() error {
 
 // TaraClientContractInterfaceInitialized represents a Initialized event raised by the TaraClientContractInterface contract.
 type TaraClientContractInterfaceInitialized struct {
-	Threshold           *big.Int
-	PillarBlockInterval *big.Int
-	Raw                 types.Log // Blockchain specific contextual infos
+	Version uint64
+	Raw     types.Log // Blockchain specific contextual infos
 }
 
-// FilterInitialized is a free log retrieval operation binding the contract event 0x997896709b4e932ee42750e2e14ed1f7ab6c60bd911ff567aa2485cf0b20051b.
+// FilterInitialized is a free log retrieval operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
 //
-// Solidity: event Initialized(uint256 threshold, uint256 pillarBlockInterval)
+// Solidity: event Initialized(uint64 version)
 func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterInitialized(opts *bind.FilterOpts) (*TaraClientContractInterfaceInitializedIterator, error) {
 
 	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "Initialized")
@@ -857,9 +867,9 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterI
 	return &TaraClientContractInterfaceInitializedIterator{contract: _TaraClientContractInterface.contract, event: "Initialized", logs: logs, sub: sub}, nil
 }
 
-// WatchInitialized is a free log subscription operation binding the contract event 0x997896709b4e932ee42750e2e14ed1f7ab6c60bd911ff567aa2485cf0b20051b.
+// WatchInitialized is a free log subscription operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
 //
-// Solidity: event Initialized(uint256 threshold, uint256 pillarBlockInterval)
+// Solidity: event Initialized(uint64 version)
 func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchInitialized(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceInitialized) (event.Subscription, error) {
 
 	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "Initialized")
@@ -894,146 +904,12 @@ func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchIn
 	}), nil
 }
 
-// ParseInitialized is a log parse operation binding the contract event 0x997896709b4e932ee42750e2e14ed1f7ab6c60bd911ff567aa2485cf0b20051b.
+// ParseInitialized is a log parse operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
 //
-// Solidity: event Initialized(uint256 threshold, uint256 pillarBlockInterval)
+// Solidity: event Initialized(uint64 version)
 func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseInitialized(log types.Log) (*TaraClientContractInterfaceInitialized, error) {
 	event := new(TaraClientContractInterfaceInitialized)
 	if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// TaraClientContractInterfaceInitialized0Iterator is returned from FilterInitialized0 and is used to iterate over the raw logs and unpacked data for Initialized0 events raised by the TaraClientContractInterface contract.
-type TaraClientContractInterfaceInitialized0Iterator struct {
-	Event *TaraClientContractInterfaceInitialized0 // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *TaraClientContractInterfaceInitialized0Iterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(TaraClientContractInterfaceInitialized0)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(TaraClientContractInterfaceInitialized0)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraClientContractInterfaceInitialized0Iterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *TaraClientContractInterfaceInitialized0Iterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// TaraClientContractInterfaceInitialized0 represents a Initialized0 event raised by the TaraClientContractInterface contract.
-type TaraClientContractInterfaceInitialized0 struct {
-	Version uint64
-	Raw     types.Log // Blockchain specific contextual infos
-}
-
-// FilterInitialized0 is a free log retrieval operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
-//
-// Solidity: event Initialized(uint64 version)
-func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) FilterInitialized0(opts *bind.FilterOpts) (*TaraClientContractInterfaceInitialized0Iterator, error) {
-
-	logs, sub, err := _TaraClientContractInterface.contract.FilterLogs(opts, "Initialized0")
-	if err != nil {
-		return nil, err
-	}
-	return &TaraClientContractInterfaceInitialized0Iterator{contract: _TaraClientContractInterface.contract, event: "Initialized0", logs: logs, sub: sub}, nil
-}
-
-// WatchInitialized0 is a free log subscription operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
-//
-// Solidity: event Initialized(uint64 version)
-func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) WatchInitialized0(opts *bind.WatchOpts, sink chan<- *TaraClientContractInterfaceInitialized0) (event.Subscription, error) {
-
-	logs, sub, err := _TaraClientContractInterface.contract.WatchLogs(opts, "Initialized0")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(TaraClientContractInterfaceInitialized0)
-				if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized0", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseInitialized0 is a log parse operation binding the contract event 0xc7f505b2f371ae2175ee4913f4499e1f2633a7b5936321eed1cdaeb6115181d2.
-//
-// Solidity: event Initialized(uint64 version)
-func (_TaraClientContractInterface *TaraClientContractInterfaceFilterer) ParseInitialized0(log types.Log) (*TaraClientContractInterfaceInitialized0, error) {
-	event := new(TaraClientContractInterfaceInitialized0)
-	if err := _TaraClientContractInterface.contract.UnpackLog(event, "Initialized0", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
