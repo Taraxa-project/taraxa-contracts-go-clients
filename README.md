@@ -56,7 +56,7 @@ or update all submodules:
 git submodule update --init --recursive
 cd submodules/bridge
 git submodule update --init --recursive
-
+```
 
 Generate abi & client:
 ```
